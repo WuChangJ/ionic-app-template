@@ -1,23 +1,32 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
-        <ion-title>安全中心</ion-title>
-      </ion-toolbar>
+      <nav-bar>安全中心</nav-bar>
     </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">安全中心</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <div>修改登录密码</div>
-      <div>设置头像</div>
-      <div>修改昵称</div>
+    <ion-content>
+      <ion-list :inset="true">
+<ion-item button @click="push('/safetyCenter/changePassword')">
+      <ion-label>修改登录密码</ion-label>
+      <ion-icon :icon="chevronForward" slot="end" color="medium" />
+    </ion-item>
+    <ion-item button @click="push('/safetyCenter/setAvatar')">
+      <ion-label>设置头像</ion-label>
+      <ion-icon :icon="chevronForward" slot="end" color="medium" />
+    </ion-item>
+    <ion-item button @click="push('/safetyCenter/changeNickname')">
+          <ion-label>修改昵称</ion-label>
+          <ion-icon :icon="chevronForward" slot="end" color="medium" />
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonContent, IonList, IonItem, IonLabel, IonIcon } from '@ionic/vue';
+import { chevronForward } from 'ionicons/icons';
+import NavBar from '@/layout/navBar.vue';
+import { useAppRouter } from '@/router/useAppRouter';
+
+const { push } = useAppRouter();
 </script>
